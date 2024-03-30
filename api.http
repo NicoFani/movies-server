@@ -1,0 +1,58 @@
+### Recuperar todas las peliculas
+
+GET http://localhost:4000/api/movies
+
+### Recuperar una pelicula por ID
+
+GET http://localhost:4000/api/movies/1
+
+### Recuperar generos de peliculas por ID
+
+GET http://localhost:4000/api/movies/1/genres
+
+### Recuperar peliculas con sus generos
+
+GET http://localhost:4000/api/movies-genres/movies-with-genres
+
+### Recuperar pelicula con sus generos por nombre
+
+GET http://localhost:4000/api/movies-genres/movies-with-genres/Inception
+
+### Recuperar generos de peliculas
+
+GET http://localhost:4000/api/genres
+
+### Recuperar una peliculas y generos
+
+GET http://localhost:4000/api/movies-genres
+
+### Agregar una pelicula
+
+POST http://localhost:4000/api/movies
+Content-Type: application/json
+
+{
+    "nombre": "Forrest Gump",
+    "director": "Robert Zemeckis",
+    "anio": 1994,
+    "imagen": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgJaxEFJxdwh2SP1sAI92IQgaThjvJM6XSd1G2YEEqVwjqNnVF",
+    "duracion": "142"
+}
+
+### Eliminar una pelicula
+
+DELETE http://localhost:4000/api/movies/3
+
+### Actualizar una pelicula
+
+PUT http://localhost:4000/api/movies/1
+Content-Type: application/json
+
+{
+    "nombre": "Titanic",
+    "director": "James Cameron",
+    "anio": 1997,
+    "imagen": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTO4uDn64PLOGg3ECiPApplZ_SI6n3ZTGYfQLxYpA1GeFPxYqaT",
+    "duracion": "195"
+}
+

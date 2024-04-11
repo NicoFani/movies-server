@@ -9,6 +9,8 @@ router.get('/:id', movieController.getMovie)
 
 router.get('/:id/genres', movieController.getGenresByMovieId)
 
+router.get('/genres/:genreId', movieController.getMoviesByGenreId)
+
 router.post('/', movieController.addMovie)
 
 router.put('/:id', movieController.updateMovie)

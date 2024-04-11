@@ -1,3 +1,8 @@
+### Recuperar las peliculas de un usuario por id de usuario
+
+GET http://localhost:4000/api/users/1/movies
+
+
 ### Recuperar todas las peliculas
 
 GET http://localhost:4000/api/movies
@@ -12,11 +17,11 @@ GET http://localhost:4000/api/movies/1/genres
 
 ### Recuperar peliculas con sus generos
 
-GET http://localhost:4000/api/movies-genres/movies-with-genres
+GET http://localhost:4000/api/movies-genres
 
 ### Recuperar pelicula con sus generos por nombre
 
-GET http://localhost:4000/api/movies-genres/movies-with-genres/Inception
+GET http://localhost:4000/api/movies-genres/Inception
 
 ### Recuperar generos de peliculas
 
@@ -25,6 +30,18 @@ GET http://localhost:4000/api/genres
 ### Recuperar una peliculas y generos
 
 GET http://localhost:4000/api/movies-genres
+
+### Recuperar todos los usuarios
+
+GET http://localhost:4000/api/users
+
+### Recuperar todos los usuarios con sus peliculas
+
+GET http://localhost:4000/api/users-movies
+
+### Recuperar peliculas por genero
+
+GET http://localhost:4000/api/movies/genres/3
 
 ### Agregar una pelicula
 
@@ -56,3 +73,23 @@ Content-Type: application/json
     "duracion": "195"
 }
 
+
+### Agregar un usuario
+POST http://localhost:4000/api/users/register
+Content-Type: application/json
+
+{
+    "email": "miguelote@gmail.com",
+    "nombre_usuario": "miguelote04",
+    "contraseña": "abc123"
+}
+
+### Iniciar sesion
+
+POST http://localhost:4000/api/users/login
+Content-Type: application/json
+
+{
+    "nombre_usuario": "lore123",
+    "contraseña": "lore123"
+}

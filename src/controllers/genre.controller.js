@@ -5,7 +5,7 @@ const getGenres = async (req, res) => {
     const connection = await getConnection()
 
     const result = await connection.promise().query('SELECT * FROM generos')
-    const genres = result
+    const genres = result[0]
     res.json(genres)
   } catch (error) {
     res.status(500)

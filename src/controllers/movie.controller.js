@@ -45,33 +45,23 @@ const getGenresByMovieId = async (req, res) => {
   }
 }
 
-// const getMoviesWithGenres = async (req, res) => {
-//   try {
-//     const connection = await getConnection()
+const getMoviesByGenreId = async (req, res) => {
+  try {
+    const { genreId } = req.params
+    const connection = await getConnection()
 
-//     const result = await connection
-//       .promise()
-//       .query(
-//         'SELECT peliculas.*, GROUP_CONCAT(generos.nombre SEPARATOR ", ") as generos FROM peliculas LEFT JOIN peliculas_generos ON peliculas.id = peliculas_generos.id_pelicula LEFT JOIN generos ON peliculas_generos.id_genero = generos.id GROUP BY peliculas.id'
-//       )
-//   } catch (error) {
-//     res.status(500)
-//     res.send(error.message)
-//   }
-// }
-
-// const getMoviesWithGenres = async (req, res) => {
-//   try {
-//     const connection = await getConnection()
-
-//     const result = await connection
-//       .promise()
-//       .query('SELECT * FROM peliculas_generos')
-//   } catch (error) {
-//     res.status(500)
-//     res.send(error.message)
-//   }
-// }
+    const result = await connection
+      .promise()
+      .query(
+        'SELECT peliculas.*, GROUP_CONCAT(generos.nombre SEPARATOR ", ") as generos FROM peliculas LEFT JOIN peliculas_generos ON peliculas.id = peliculas_generos.id_pelicula LEFT JOIN generos ON peliculas_generos.id_genero = generos.id WHERE generos.id = ? GROUP BY peliculas.id',
+        [genreId]
+      )
+    res.json(result[0])
+  } catch (error) {
+    res.status(500)
+    res.send(error.message)
+  }
+}
 
 const addMovie = async (req, res) => {
   try {
@@ -140,6 +130,7 @@ export const methods = {
   getMovies,
   getMovie,
   getGenresByMovieId,
+  getMoviesByGenreId,
   addMovie,
   updateMovie,
   deleteMovie

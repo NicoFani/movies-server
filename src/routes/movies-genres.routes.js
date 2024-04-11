@@ -5,11 +5,6 @@ const router = Router()
 
 router.get('/', movieController.getMoviesGenres)
 
-router.get('/movies-with-genres', movieController.getMoviesWithGenres)
-
-router.get(
-  '/movies-with-genres/:name',
-  movieController.getMovieWithGenresByName
-)
+router.get('/:name', movieController.getMovieGenresByName)
 
 export default router

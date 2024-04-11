@@ -5,6 +5,8 @@ import morgan from 'morgan'
 import moviesRoutes from './routes/movies.routes'
 import genresRoutes from './routes/genres.routes'
 import moviesGenresRoutes from './routes/movies-genres.routes'
+import usersRoutes from './routes/users.routes'
+import usersMoviesRoutes from './routes/users-movies.routes'
 
 const cors = require('cors')
 const app = express()
@@ -24,5 +26,7 @@ app.use(express.json())
 app.use('/api/movies', moviesRoutes)
 app.use('/api/genres', genresRoutes)
 app.use('/api/movies-genres', moviesGenresRoutes)
+app.use('/api/users', usersRoutes)
+app.use('/api/users-movies', usersMoviesRoutes)
 
 export default app

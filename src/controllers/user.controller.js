@@ -18,7 +18,6 @@ const getUsers = async (req, res) => {
 
 const addUser = async (req, res) => {
   try {
-    console.log('pase aca')
     const connection = await getConnection()
     const { email, nombre_usuario, contraseña } = req.body
 
@@ -117,25 +116,6 @@ const loginUser = async (req, res) => {
     res.send(error.message)
   }
 }
-
-// TENGO QUE TERMINAR DE HACER LA FUNCION PARA VALIDAR EL TOKEN
-
-// function validateToken(req, res, next) {
-//   const token = req.headers['authorization']
-//   if (!token) {
-//     res.status(401)
-//     return res.json({ message: 'Unauthorized' })
-//   }
-
-//   jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
-//     if (err) {
-//       res.status(401)
-//       return res.json({ message: 'Unauthorized' })
-//     }
-//     req.user = user
-//     next()
-//   })
-// }
 
 export const methods = {
   getUsers,

@@ -93,3 +93,21 @@ Content-Type: application/json
     "nombre_usuario": "lore123",
     "contraseña": "lore123"
 }
+
+### Agregar una pelicula a un usuario
+
+POST http://localhost:4000/api/users-movies
+Content-Type: application/json
+
+{
+    "id_usuario": 7,
+    "id_pelicula": 14
+}
+
+### Devolver una pelicula de un usuario
+
+GET http://localhost:4000/api/users-movies/1/18
+
+### Eliminar una pelicula de un usuario
+
+DELETE http://localhost:4000/api/users-movies/1/1

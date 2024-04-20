@@ -2,11 +2,11 @@ import express from 'express'
 import morgan from 'morgan'
 
 // Routes
-import moviesRoutes from './routes/movies.routes'
-import genresRoutes from './routes/genres.routes'
-import moviesGenresRoutes from './routes/movies-genres.routes'
-import usersRoutes from './routes/users.routes'
-import usersMoviesRoutes from './routes/users-movies.routes'
+import moviesRoutes from './routes/movies.routes.js'
+import genresRoutes from './routes/genres.routes.js'
+import moviesGenresRoutes from './routes/movies-genres.routes.js'
+import usersRoutes from './routes/users.routes.js'
+import usersMoviesRoutes from './routes/users-movies.routes.js'
 
 const cors = require('cors')
 const app = express()
@@ -55,5 +55,12 @@ app.use('/api/genres', genresRoutes)
 app.use('/api/movies-genres', moviesGenresRoutes)
 app.use('/api/users', usersRoutes)
 app.use('/api/users-movies', usersMoviesRoutes)
+
+const main = () => {
+  app.listen(app.get('port'))
+  console.log(`Server on port ${app.get('port')}`)
+}
+
+main()
 
 export default app

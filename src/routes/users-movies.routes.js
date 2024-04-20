@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { methods as movieController } from './../controllers/users-movies.controller'
+import { methods as movieController } from '../controllers/users-movies.controller.js'
 
 const verifyToken = require('../../middlewares/verifyToken')
 

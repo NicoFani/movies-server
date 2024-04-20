@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken')
-const { promisify } = require('util')
+import jwt from 'jsonwebtoken'
+import promisify from 'util'
 
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1]
@@ -21,4 +21,4 @@ const verifyToken = async (req, res, next) => {
   }
 }
 
-module.exports = verifyToken
+export { verifyToken }

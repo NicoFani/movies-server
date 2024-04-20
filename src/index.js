@@ -1,8 +1,8 @@
-// import app from './app.js'
+import app from './app.js'
 
-// const main = () => {
-//   app.listen(app.get('port'))
-//   console.log(`Server on port ${app.get('port')}`)
-// }
+const main = () => {
+  app.listen(app.get('port'))
+  console.log(`Server on port ${app.get('port')}`)
+}
 
-// main()
+main()

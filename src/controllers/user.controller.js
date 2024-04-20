@@ -1,7 +1,6 @@
 import { getConnection } from '../database/database.js'
-
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const getUsers = async (req, res) => {
   try {

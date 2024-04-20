@@ -1,5 +1,7 @@
-const express = require('express')
+import express from 'express'
 import morgan from 'morgan'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
 // Routes
 import moviesRoutes from './routes/movies.routes.js'
@@ -7,10 +9,11 @@ import genresRoutes from './routes/genres.routes.js'
 import moviesGenresRoutes from './routes/movies-genres.routes.js'
 import usersRoutes from './routes/users.routes.js'
 import usersMoviesRoutes from './routes/users-movies.routes.js'
-
-const cors = require('cors')
+import path from 'path'
+import cors from 'cors'
 const app = express()
-const path = require('path')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 // Cors
 
@@ -55,12 +58,5 @@ app.use('/api/genres', genresRoutes)
 app.use('/api/movies-genres', moviesGenresRoutes)
 app.use('/api/users', usersRoutes)
 app.use('/api/users-movies', usersMoviesRoutes)
-
-const main = () => {
-  app.listen(app.get('port'))
-  console.log(`Server on port ${app.get('port')}`)
-}
-
-main()
 
 export default app

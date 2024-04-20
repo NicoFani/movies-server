@@ -110,4 +110,5 @@ GET http://localhost:4000/api/users-movies/1/18
 
 ### Eliminar una pelicula de un usuario
 
-DELETE http://localhost:4000/api/users-movies/1/1
+DELETE http://localhost:4000/api/users-movies/8/1
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmVfdXN1YXJpbyI6Im5pY29sYXMwIiwiaWQiOjEyLCJpYXQiOjE3MTM2MzI4NTUsImV4cCI6MTcxMzYzNjQ1NX0.LpGEbLNGGefeW7-LyqDfIDmiPkUx7vrRb2q5euHiFOU"

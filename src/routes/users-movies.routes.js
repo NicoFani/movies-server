@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import { methods as movieController } from '../controllers/users-movies.controller.js'
-
 import { verifyToken } from '../middlewares/verifyToken.js'
 
 const router = Router()

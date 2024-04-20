@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import promisify from 'util'
+import { promisify } from 'util'
 
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1]

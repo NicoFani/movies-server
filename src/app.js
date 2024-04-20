@@ -10,6 +10,7 @@ import usersMoviesRoutes from './routes/users-movies.routes'
 
 const cors = require('cors')
 const app = express()
+const path = require('path')
 
 // Cors
 
@@ -21,6 +22,32 @@ app.set('port', 4000)
 // Middlewares
 app.use(morgan('dev'))
 app.use(express.json())
+
+app.use(express.static(path.join(__dirname, '../../movies-frontend')))
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../movies-frontend', 'index.html'))
+})
+
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../movies-frontend', 'index.html'))
+})
+
+app.get('/login', (req, res) => {
+  try {
+    res.sendFile(
+      path.join(__dirname, '../../movies-frontend', 'login/login.html')
+    )
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+app.get('/signup', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, '../../movies-frontend', 'signup/signup.html')
+  )
+})
 
 // Routes
 app.use('/api/movies', moviesRoutes)

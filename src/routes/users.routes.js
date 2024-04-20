@@ -4,7 +4,7 @@ import { verifyToken } from '../middlewares/verifyToken.js'
 
 const router = Router()
 
-router.get('/', movieController.getUsers)
+router.get('/', verifyToken, movieController.getUsers)
 
 router.get('/:id/movies', verifyToken, movieController.getUserMoviesByUserId)
 

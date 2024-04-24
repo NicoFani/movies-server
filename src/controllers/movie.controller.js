@@ -50,16 +50,33 @@ const getMoviesByGenreId = async (req, res) => {
     const { genreId } = req.params
     const connection = await getConnection()
 
-    const result = await connection
+    // Consulta para obtener todas las películas del género específico
+    const moviesResult = await connection
       .promise()
       .query(
-        'SELECT peliculas.*, GROUP_CONCAT(generos.nombre SEPARATOR ", ") as generos FROM peliculas LEFT JOIN peliculas_generos ON peliculas.id = peliculas_generos.id_pelicula LEFT JOIN generos ON peliculas_generos.id_genero = generos.id WHERE generos.id = ? GROUP BY peliculas.id',
+        'SELECT * FROM peliculas WHERE id IN (SELECT id_pelicula FROM peliculas_generos WHERE id_genero = ?)',
         [genreId]
       )
-    res.json(result[0])
+
+    const movies = moviesResult[0]
+
+    // Consulta para obtener todos los géneros relacionados con cada película
+    for (let i = 0; i < movies.length; i++) {
+      const movieId = movies[i].id
+      const genresResult = await connection
+        .promise()
+        .query(
+          'SELECT generos.nombre FROM generos INNER JOIN peliculas_generos ON generos.id = peliculas_generos.id_genero WHERE peliculas_generos.id_pelicula = ?',
+          [movieId]
+        )
+
+      const genres = genresResult[0].map((row) => row.nombre)
+      movies[i].generos = genres
+    }
+
+    res.json(movies)
   } catch (error) {
-    res.status(500)
-    res.send(error.message)
+    res.status(500).send(error.message)
   }
 }
 
